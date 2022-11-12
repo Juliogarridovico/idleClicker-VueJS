@@ -1,34 +1,21 @@
 <script>
-// import { useCounterStore } from "../stores/counter.js";
+import { useCounterStore } from "@/stores/counter";
 
-// export default {
-//   data() {
-//     return {
-//       clicks: 0,
-//     };
-//   },
-//   setup() {
-//     const counter = useCounterStore();
-
-//     counter.count++;
-//     // with autocompletion ✨
-//     counter.$patch({ count: counter.count + 1 });
-//     // or using an action instead
-//     counter.increment();
-//   },
-// };
-
-import { useCounterStore } from "@/stores/counter.js";
-import { mapState } from "pinia";
+const test = useCounterStore();
 export default {
   name: "theGame",
   data() {
     return {
-      clicks: 0,
+      clicks:0,
     };
   },
-  computed: {
-    ...mapState(useCounterStore, ["counter"]),
+  computed: {},
+  methods: {
+    sube: function () {
+      console.log(test.counter);
+      test.increment();
+      this.clicks = test.counter;
+    },
   },
 };
 </script>
@@ -36,13 +23,13 @@ export default {
 <template>
   <div class="theGame">
     <p>click {{ clicks }}</p>
-    <p>Pinia {{ counter }}</p>
-    <button v-on:click="clicks += 1">vueJS</button>
-    <button v-on:click="useCounterStore.increment()">Pinia</button>
+
+    
+    <button v-on:click="sube()">Pinia</button>
   </div>
 </template>
 
-<style scoped>
+<style >
 @import url("https://fonts.googleapis.com/css?family=Gloria+Hallelujah");
 
 button {
