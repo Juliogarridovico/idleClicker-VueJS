@@ -23,4 +23,13 @@ const router = createRouter({
   ]
 })
 
-export default router
+const router = createRouter({
+  history: createWebHistory("/"),
+  routes,
+  scrollBehavior() {
+    document.getElementById("app").scrollIntoView();
+  },
+});
+
+export default router;
+
