@@ -10,12 +10,9 @@ export const useCounterStore = defineStore({
     isEvenOrOdd: (state) => (state.counter % 2 ? "Odd" : "Even"),
   },
   actions: {
-    increment() {
-      this.counter += 1;
-    },
-
-    decrement() {
-      this.counter -= 1;
+    increment(click) {
+      console.log("estoy");
+      this.counter += click;
     },
   },
 });
