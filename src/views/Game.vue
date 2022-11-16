@@ -6,58 +6,61 @@ export default {
   name: "theGame",
   data() {
     return {
-      clicks:0,
-      ganaciaSecundo:0,
-      mejoras:[
-        {name:'clickUsuario', level:0},
-        {name:'mejora_1', level:0},
-        {name:'mejora_2', level:0},
-        {name:'mejora_3', level:0},
-        {name:'mejora_4', level:0},
-        {name:'mejora_5', level:0},
-       
+      clicks: 0,
+      ganaciaSecundo: 0,
+      mejoras: [
+        { name: "clickUsuario", level: 0 },
+        { name: "mejora_1", level: 0 },
+        { name: "mejora_2", level: 0 },
+        { name: "mejora_3", level: 0 },
+        { name: "mejora_4", level: 0 },
+        { name: "mejora_5", level: 0 },
       ],
     };
   },
   computed: {},
   methods: {
+    resetClicks(){
+      localStorage.setItem("clicks",0);
+      this.clicks = 0
+    },
     sube: function () {
       console.log(test.counter);
       test.increment();
+      localStorage.setItem("clicks",test.counter);
       this.clicks = test.counter;
     },
-    mejora: function(mejora){
-      console.log(mejora)
-      console.log("mejorando " + mejora)
+    mejora: function (mejora) {
+      console.log(mejora);
+      console.log("mejorando " + mejora);
     },
-    mejoraJugador:function(nivel){
-      console.log("ddd")
-      console.log(nivel)
+    mejoraJugador: function (nivel) {
+      console.log("ddd");
+      console.log(nivel);
     },
-    
   },
-  created(){
-    
-    },
+  created() {},
+  mounted(){
+    console.log("pienso luego existo");
+    this.clicks = localStorage.getItem("clicks")
+  },
 };
 </script>
 
 <template>
   <div class="theGame">
     <p>click: {{ clicks }}</p>
-    <p>Ganancia por segundo: {{ganaciaSecundo}}</p>
-    <p>nivel del click del usuario: {{mejoras[0].level}}</p>
+    <p v-on:click="resetClicks()">reset clicks</p>
+    <p>Ganancia por segundo: {{ ganaciaSecundo }}</p>
+    <p>nivel del click del usuario: {{ mejoras[0].level }}</p>
 
-    
     <button v-on:click="sube()">Pinia</button>
   </div>
-  <div >
-    
+  <div>
     <ul id="bucle" v-for="(mejora, i) in mejoras" :key="i">
-      <li v-if="clicks>=i" @click="mejoraJugador(i)">{{mejora.name}}</li>
+      <li v-if="clicks >= i" @click="mejoraJugador(i)">{{ mejora.name }}</li>
     </ul>
   </div>
-  
 </template>
 
 <style >
