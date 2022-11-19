@@ -4,6 +4,7 @@ export const useCounterStore = defineStore({
   id: "counter",
   state: () => ({
     counter: 0,
+    clicksTotales:1,
   }),
   getters: {
     doubleCount: (state) => state.counter * 2,
@@ -12,7 +13,7 @@ export const useCounterStore = defineStore({
   actions: {
     increment(click) {
       console.log("estoy");
-      this.counter += click;
+      this.counter += 1;
     },
   },
 });
