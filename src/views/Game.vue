@@ -10,17 +10,17 @@ export default {
 
       ganaciaSecundo: 0,
       mejoras: [
-        { name: "clickUsuario", level: 1, costeInicial: 0 },
-        { name: "upgrade_1", level: 0, precompra: 0, costeInicial: 1 },
-        { name: "upgrade_2", level: 0, precompra: 0, costeInicial: 2 },
-        { name: "upgrade_3", level: 0, precompra: 0, costeInicial: 3 },
-        { name: "upgrade_4", level: 0, precompra: 0, costeInicial: 4 },
-        { name: "upgrade_5", level: 0, precompra: 0, costeInicial: 5 },
-        { name: "upgrade_6", level: 0, precompra: 0, costeInicial: 6 },
-        { name: "upgrade_7", level: 0, precompra: 0, costeInicial: 7 },
-        { name: "upgrade_8", level: 0, precompra: 0, costeInicial: 8 },
-        { name: "upgrade_9", level: 0, precompra: 0, costeInicial: 9 },
-        { name: "upgrade_10", level: 0, precompra: 0, costeInicial: 10 },
+        { name: "clickUsuario", level: 1, costeInicial: 1 },
+        { name: "upgrade_1", level: 0, precompra: 0, costeInicial: 10 },
+        { name: "upgrade_2", level: 0, precompra: 0, costeInicial: 100 },
+        { name: "upgrade_3", level: 0, precompra: 0, costeInicial: 1000 },
+        { name: "upgrade_4", level: 0, precompra: 0, costeInicial: 10000 },
+        { name: "upgrade_5", level: 0, precompra: 0, costeInicial: 100000 },
+        { name: "upgrade_6", level: 0, precompra: 0, costeInicial: 1000000 },
+        { name: "upgrade_7", level: 0, precompra: 0, costeInicial: 10000000 },
+        { name: "upgrade_8", level: 0, precompra: 0, costeInicial: 100000000 },
+        { name: "upgrade_9", level: 0, precompra: 0, costeInicial: 1000000000 },
+        { name: "upgrade_10", level: 0, precompra: 0, costeInicial: 10000000000 },
       ],
     };
   },
@@ -72,11 +72,7 @@ export default {
       //name: "clickUsuario", level: 1, costeInicial: 1
       // console.log("Test " + this.mejoras[mejora].level);
       let coste;
-      coste =
-        (this.mejoras[mejora].costeInicial / (this.mejoras[mejora].level + 1)) *
-          1.07 +
-        this.mejoras[mejora].costeInicial + 
-        (this.mejoras[mejora].level + 1) * 1.07;
+      coste = (this.mejoras[mejora].costeInicial / (this.mejoras[mejora].level + 1)) * 1.07 +this.mejoras[mejora].costeInicial + (this.mejoras[mejora].level + 1) * 1.07;
       return coste;
     },
   },
